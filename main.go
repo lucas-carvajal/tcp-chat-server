@@ -7,7 +7,7 @@ import (
 
 func main() {
 	s := newServer()
-	s.run()
+	go s.run()
 
 	listener, err := net.Listen("tcp", ":8888")
 	if err != nil {
@@ -15,7 +15,7 @@ func main() {
 	}
 
 	defer listener.Close()
-	log.Printf("started server on :8080")
+	log.Printf("started server on :8888")
 
 	for {
 		conn, err := listener.Accept()

@@ -6,7 +6,12 @@ TCP chat server built in Go.
 
 ### How to use it?
 1. Make sure you have Go 1.16 installed
-3. Run the main function in the 'main.go' file
+2. Run the main function in the 'main.go' file
+3. Use telnet to connect to the server
+   1. `telnet localhost 8888`
+   2. `/nick lucas` to give you a nick
+   3. `/join football` to join the football chat
+   4. `/msg hi!` to send "hi!" to the chat
 
 
 ### What did I learn?
@@ -23,7 +28,6 @@ Functionality I added includes:
 
 
 
----
 
 ---
 
