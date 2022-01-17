@@ -40,5 +40,12 @@ Functionality I added includes:
 - `/quit` - disconnect from the chat server
 
 
+---
+---
 
+### TODO
+
+* add `/quitRoom` command to quit a room
+* add general chat without joining a room
+* add a direct message feature
 
