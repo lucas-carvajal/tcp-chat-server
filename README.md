@@ -22,7 +22,7 @@ This project was created following Alex Pliutau's video on YouTube.
 You can find it here: https://www.youtube.com/watch?v=Sphme0BqJiY&t=179s
 
 Functionality I added includes:
-* tba
+* Users can omit the `/msg` command and the input will be sent as a message automatically
 
 
 
@@ -45,7 +45,6 @@ Functionality I added includes:
 
 ### TODO
 
-* if no command as first argument, send the text as a chat
 * add `/quitRoom` command to quit a room
 * add general chat without joining a room
 * add a direct message feature

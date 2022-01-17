@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"net"
 	"strings"
 )
@@ -58,7 +57,11 @@ func (c *client) readInput() {
 				args:   args,
 			}
 		default:
-			c.err(fmt.Errorf("unknown command: %s", cmd))
+			c.commands <- command{
+				id:     CMD_MSG,
+				client: c,
+				args:   append([]string{"/msg"}, args...),
+			}
 		}
 	}
 }
