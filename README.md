@@ -16,6 +16,7 @@ TCP chat server built in Go.
 
 ### What did I learn?
 * Go
+* Goroutines
 
 ### Disclaimers
 This project was created following Alex Pliutau's video on YouTube.  

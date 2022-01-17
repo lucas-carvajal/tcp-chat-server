@@ -21,6 +21,14 @@ func newServer() *server {
 }
 
 func (s *server) run() {
+	if len(s.rooms) < 1 {
+		r := &room{
+			name:    "lobby",
+			members: make(map[net.Addr]*client),
+		}
+		s.rooms["lobby"] = r
+	}
+
 	for cmd := range s.commands {
 		switch cmd.id {
 		case CMD_NICK:
