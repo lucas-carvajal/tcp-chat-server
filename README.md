@@ -45,6 +45,7 @@ Functionality I added includes:
 
 ### TODO
 
+* if no command as first argument, send the text as a chat
 * add `/quitRoom` command to quit a room
 * add general chat without joining a room
 * add a direct message feature
