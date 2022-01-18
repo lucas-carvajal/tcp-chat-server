@@ -63,6 +63,12 @@ func (c *client) readInput() {
 				client: c,
 				args:   []string{"/quitRoom", "lobby"},
 			}
+		case "/roomMembers":
+			c.commands <- command{
+				id:     CMD_MEMBERS,
+				client: c,
+				args:   args,
+			}
 		default:
 			if strings.HasPrefix(cmd, "/") {
 				c.err(fmt.Errorf("unknown command: %s", cmd))

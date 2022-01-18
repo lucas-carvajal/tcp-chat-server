@@ -26,7 +26,7 @@ Functionality I added includes:
 * Users can omit the `/msg` command and the input will be sent as a message automatically
 * After connecting, all users will automatically be added to the 'lobby' chat
 * Users can exit a room with the `/quitRoom` command and will be placed back in the 'lobby' chat
-
+* Users can see all members in a room with the command `/roomMembers`
 
 
 
@@ -39,7 +39,8 @@ Functionality I added includes:
 - `/rooms` - shows list of available rooms to join
 - `/msg <msg>` - broadcasts message to everyone in the room
 - `/quit` - disconnect from the chat server
-- `/quitRoom` - to quit a room and go back to the lobby chat
+- `/quitRoom` - quit a room and go back to the lobby chat
+- `/roomMembers` - shows list of all members in the current room 
 
 
 ---
@@ -48,6 +49,5 @@ Functionality I added includes:
 ### TODO
 
 * add a direct message feature
-* add `/roomMembers` command to see all current room members
 * add `/help` command to show all commands with explanation
 

@@ -36,11 +36,13 @@ func (s *server) run() {
 		case CMD_JOIN:
 			s.join(cmd.client, cmd.args)
 		case CMD_ROOMS:
-			s.listRooms(cmd.client, cmd.args)
+			s.listRooms(cmd.client)
 		case CMD_MSG:
 			s.msg(cmd.client, cmd.args)
 		case CMD_QUIT:
-			s.quit(cmd.client, cmd.args)
+			s.quit(cmd.client)
+		case CMD_MEMBERS:
+			s.roomMember(cmd.client)
 		}
 	}
 }
@@ -86,7 +88,7 @@ func (s *server) join(c *client, args []string) {
 	c.msg(fmt.Sprintf("Welcome to %s", r.name))
 }
 
-func (s *server) listRooms(c *client, args []string) {
+func (s *server) listRooms(c *client) {
 	var rooms []string
 	for name := range s.rooms {
 		rooms = append(rooms, name)
@@ -104,7 +106,7 @@ func (s *server) msg(c *client, args []string) {
 	c.room.broadcast(c, c.nick+": "+strings.Join(args[1:len(args)], " "))
 }
 
-func (s *server) quit(c *client, args []string) {
+func (s *server) quit(c *client) {
 	log.Printf("client has disconnected: %s", c.conn.RemoteAddr().String())
 
 	s.quitCurrentRoom(c)
@@ -118,5 +120,17 @@ func (s *server) quitCurrentRoom(c *client) {
 	if c.room != nil {
 		delete(c.room.members, c.conn.RemoteAddr())
 		c.room.broadcast(c, fmt.Sprintf("%s has left the room", c.nick))
+	}
+}
+
+func (s *server) roomMember(c *client) {
+	if c.room != nil {
+		var members []string
+
+		for member := range c.room.members {
+			members = append(members, c.room.members[member].nick)
+		}
+
+		c.msg(fmt.Sprintf("Current members of room %s: %s", c.room.name, strings.Join(members, ", ")))
 	}
 }
