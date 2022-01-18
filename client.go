@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"net"
 	"strings"
 )
@@ -56,11 +57,21 @@ func (c *client) readInput() {
 				client: c,
 				args:   args,
 			}
-		default:
+		case "/quitRoom":
 			c.commands <- command{
-				id:     CMD_MSG,
+				id:     CMD_JOIN,
 				client: c,
-				args:   append([]string{"/msg"}, args...),
+				args:   []string{"/quitRoom", "lobby"},
+			}
+		default:
+			if strings.HasPrefix(cmd, "/") {
+				c.err(fmt.Errorf("unknown command: %s", cmd))
+			} else {
+				c.commands <- command{
+					id:     CMD_MSG,
+					client: c,
+					args:   append([]string{"/msg"}, args...),
+				}
 			}
 		}
 	}

@@ -54,6 +54,8 @@ func (s *server) newClient(conn net.Conn) {
 		commands: s.commands,
 	}
 
+	s.join(c, []string{"/join", "lobby"})
+
 	c.readInput()
 }
 
