@@ -10,6 +10,7 @@ const (
 	CMD_QUIT
 	CMD_MEMBERS
 	CMD_DM
+	CMD_HELP
 )
 
 type command struct {

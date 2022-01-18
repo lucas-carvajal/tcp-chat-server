@@ -70,12 +70,16 @@ func (c *client) readInput() {
 				args:   args,
 			}
 		case "/dm":
-			{
-				c.commands <- command{
-					id:     CMD_DM,
-					client: c,
-					args:   args,
-				}
+			c.commands <- command{
+				id:     CMD_DM,
+				client: c,
+				args:   args,
+			}
+		case "/help":
+			c.commands <- command{
+				id:     CMD_HELP,
+				client: c,
+				args:   args,
 			}
 		default:
 			if strings.HasPrefix(cmd, "/") {

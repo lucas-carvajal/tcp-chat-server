@@ -45,6 +45,8 @@ func (s *server) run() {
 			s.roomMember(cmd.client)
 		case CMD_DM:
 			s.dm(cmd.client, cmd.args)
+		case CMD_HELP:
+			s.help(cmd.client)
 		}
 	}
 }
@@ -155,4 +157,16 @@ func (s *server) dm(c *client, args []string) {
 
 	receiver.dmsg(strings.Join(args[2:], " "), c)
 
+}
+
+func (s *server) help(c *client) {
+	c.msg("Available Commands:")
+	c.msg(" /nick <name> \t - get a name, otherwise you will stay anonymous")
+	c.msg(" /join <name> \t - join a room, if room does not exist, it will be created. User can only be in one room at the same time")
+	c.msg(" /rooms \t \t - shows list of available rooms to join")
+	c.msg(" /msg <msg> \t \t - broadcasts message to everyone in the room")
+	c.msg(" /quit \t \t - disconnect from the chat server")
+	c.msg(" /quitRoom \t \t - quit a room and go back to the lobby chat")
+	c.msg(" /roomMembers \t - shows list of all members in the current room")
+	c.msg(" /dm <name> <msg> \t - send a direct message to a member of the current room")
 }

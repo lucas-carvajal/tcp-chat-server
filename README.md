@@ -28,6 +28,7 @@ Functionality I added includes:
 * Users can exit a room and will be placed back in the 'lobby' chat
 * Users can see all members in a room
 * Users can send direct messages to members of their current room
+* Users can get help by seeing a list of all commands
 
 
 
@@ -36,19 +37,11 @@ Functionality I added includes:
 #### Commands
 
 - `/nick <name>` - get a name, otherwise will stay anonymous
-- `/join <name>` - join a room, if room does not exist, it will be created. User can only be in one room at the same time.
+- `/join <name>` - join a room, if room does not exist, it will be created. User can only be in one room at the same time
 - `/rooms` - shows list of available rooms to join
 - `/msg <msg>` - broadcasts message to everyone in the room
 - `/quit` - disconnect from the chat server
 - `/quitRoom` - quit a room and go back to the lobby chat
 - `/roomMembers` - shows list of all members in the current room 
 - `/dm <name> <msg>` - send a direct message to a member of the current room
-
-
----
----
-
-### TODO
-
-* add `/help` command to show all commands with explanation
-
+- `/help` - shows list of all available commands
