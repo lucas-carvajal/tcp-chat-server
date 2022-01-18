@@ -69,6 +69,14 @@ func (c *client) readInput() {
 				client: c,
 				args:   args,
 			}
+		case "/dm":
+			{
+				c.commands <- command{
+					id:     CMD_DM,
+					client: c,
+					args:   args,
+				}
+			}
 		default:
 			if strings.HasPrefix(cmd, "/") {
 				c.err(fmt.Errorf("unknown command: %s", cmd))
@@ -89,4 +97,8 @@ func (c *client) err(err error) {
 
 func (c *client) msg(msg string) {
 	c.conn.Write([]byte(">: " + msg + "\n"))
+}
+
+func (c *client) dmsg(msg string, user *client) {
+	c.conn.Write([]byte(fmt.Sprintf(">: DM from %s: ", user.nick) + msg + "\n"))
 }

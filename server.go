@@ -43,6 +43,8 @@ func (s *server) run() {
 			s.quit(cmd.client)
 		case CMD_MEMBERS:
 			s.roomMember(cmd.client)
+		case CMD_DM:
+			s.dm(cmd.client, cmd.args)
 		}
 	}
 }
@@ -133,4 +135,24 @@ func (s *server) roomMember(c *client) {
 
 		c.msg(fmt.Sprintf("Current members of room %s: %s", c.room.name, strings.Join(members, ", ")))
 	}
+}
+
+func (s *server) dm(c *client, args []string) {
+	var receiver *client
+
+	clientRoomMembers := c.room.members
+
+	for member := range clientRoomMembers {
+		if clientRoomMembers[member].nick == args[1] {
+			receiver = clientRoomMembers[member]
+		}
+	}
+
+	if receiver == nil {
+		c.err(errors.New(fmt.Sprintf("user %s not found", args[1])))
+		return
+	}
+
+	receiver.dmsg(strings.Join(args[2:], " "), c)
+
 }

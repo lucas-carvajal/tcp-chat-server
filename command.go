@@ -9,6 +9,7 @@ const (
 	CMD_MSG
 	CMD_QUIT
 	CMD_MEMBERS
+	CMD_DM
 )
 
 type command struct {
