@@ -2,7 +2,6 @@
 
 ### What is it and what does it do?
 TCP chat server built in Go.
-`WIP`
 
 ### How to use it?
 1. Make sure you have Go 1.16 installed
